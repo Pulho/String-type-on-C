@@ -10,7 +10,7 @@
 # How it works ?
   Let's see how a basic code works and i'll explain in your due time.
   
-
+```C++
        int main()
         {
           string x;
@@ -19,7 +19,7 @@
           x.constructor(&x);
           x.desconstructor(&x);
         }
-        
+```  
  If you didn't understand, calm down and breathe, i'll explain right about now.
  So, as you can see, we create a variable of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `.constructor = string_pointers`. This way, `.constructor(&*);` will point for a function ( string_pointers ) that will do all the dirt work to set all pointers and variables inside of our struct.
   If you're familiar with constructor, you should know that you will need to use the`.desconstructor(&*)` to release memory.
