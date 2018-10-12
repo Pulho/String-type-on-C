@@ -25,7 +25,7 @@
   If you're familiar with constructor, you should know that you will need to use the`.desconstructor(&*)` to release memory.
   
 # Functions and their parameters !
-```C++
+```Py
 		-constructor(string*); // Set pointers
 		-read(string*, char); // Read string until the char is read ( 0 for Enter as Default )
 		-size(string*); // Return the size of the string
