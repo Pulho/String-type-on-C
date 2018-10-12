@@ -1,3 +1,8 @@
+#ifndef _STDIO_H_
+#define _STDIO_H_
+#include <stdio.h>
+#endif
+
 #ifndef _STDLIB_H_
 #define _STDLIB_H_
 #include <stdlib.h>
@@ -16,8 +21,9 @@ typedef struct _c_string
 	unsigned short (*strcmp)(struct _c_string*, struct _c_string*);
 	unsigned short (*stricmp)(struct _c_string*, struct _c_string*);
 	void (*concat)(struct _c_string*, struct _c_string*);
+	void (*shrink_to_fit)(struct _c_string*);
 	void (*desconstructor)(struct _c_string*);
-	
+
 	long size_string;
 	long alloc_size;
 	double charge_factor;
@@ -170,6 +176,15 @@ unsigned short _string_compare_sensitive_case_func(string* _string, string* stri
 	return boolean;
 }
 
+void _string_shrink_to_fit_func(string* _string_)
+{
+	if(_string_->text != NULL)
+	{
+		_string_->text = (char*)realloc(_string_->text, _string_->size_string * sizeof(char));
+		_string_->alloc_size = _string_->size_string;
+	}
+}
+
 void string_pointers(string* _string_)
 {
 	_string_->read = _string_read_func;
@@ -181,6 +196,7 @@ void string_pointers(string* _string_)
 	_string_->strcmp = _string_compare_func;
 	_string_->stricmp = _string_compare_sensitive_case_func;
 	_string_->desconstructor = _string_desconstructor_func;
+	_string_->shrink_to_fit = _string_shrink_to_fit_func;
 	_string_->alloc_size = 0;
 	_string_->size_string = 0; 
 	_string_->charge_factor = 0;
