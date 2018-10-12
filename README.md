@@ -25,6 +25,7 @@
   If you're familiar with constructor, you should know that you will need to use the`.desconstructor(&*)` to release memory.
   
 # Functions and their parameters !
+```C++
 		-constructor(string*); // Set pointers
 		-read(string*, char); // Read string until the char is read ( 0 for Enter as Default )
 		-size(string*); // Return the size of the string
@@ -35,3 +36,4 @@
 		-stricmp(string*, string*); // Compare strings ignoring sensitive case ( Returns a boolean )
 		-concat(string*, string*);  // Concat to the first input string
 		-desconstructor(string*); // Release memory
+```
