@@ -17,6 +17,9 @@
 
         x.constructor = string_pointers;
         x.constructor(&x);
+        
+       // ( C O D E )   
+        
         x.desconstructor(&x);
       }
 ```  
