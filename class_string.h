@@ -1,8 +1,3 @@
-#ifndef _STDIO_H_
-#define _STDIO_H_
-#include <stdio.h>
-#endif
-
 #ifndef _STDLIB_H_
 #define _STDLIB_H_
 #include <stdlib.h>
