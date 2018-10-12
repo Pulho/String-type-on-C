@@ -25,15 +25,15 @@
   If you're familiar with constructor, you should know that you will need to use the`.desconstructor(&*)` to release memory.
   
 # Functions and their parameters !
-```Py
-		-constructor(string*); // Set pointers
-		-read(string*, char); // Read string until the char is read ( 0 for Enter as Default )
-		-size(string*); // Return the size of the string
-		-print(string*, char); // Print string and put the char in the end ( 0 for none char and '\n' for newline )
-		-toupper(string*); // Set the string to uppercase
-		-tolower(string*); // Set string to to lowercase 
-		-strcmp(string*, string*); // Compare strings ( with sensitive case. Returns a boolean )
-		-stricmp(string*, string*); // Compare strings ignoring sensitive case ( Returns a boolean )
-		-concat(string*, string*);  // Concat to the first input string
-		-desconstructor(string*); // Release memory
-```
+
+*		.constructor(string*); // Set pointers
+*		.read(string*, char); // Read string until the char is read ( 0 for Enter as Default )
+*		.size(string*); // Return the size of the string
+*		.print(string*, char); // Print string and put the char in the end ( 0 for none char and '\n' for newline )
+*		.toupper(string*); // Set the string to uppercase
+*		.tolower(string*); // Set string to to lowercase 
+*		.strcmp(string*, string*); // Compare strings ( with sensitive case. Returns a boolean )
+*		.stricmp(string*, string*); // Compare strings ignoring sensitive case ( Returns a boolean )
+*		.concat(string*, string*);  // Concat to the first input string
+*		.desconstructor(string*); // Release memory
+
