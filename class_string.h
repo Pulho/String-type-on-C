@@ -17,6 +17,7 @@ typedef struct _c_string
 	void (*print)(struct _c_string*, char);
 	void (*tolower)(struct _c_string*);
 	void (*toupper)(struct _c_string*);
+	char (*at)(struct _c_string*, int pos);
 	long (*size)(struct _c_string*);
 	unsigned short (*strcmp)(struct _c_string*, struct _c_string*);
 	unsigned short (*stricmp)(struct _c_string*, struct _c_string*);
@@ -185,6 +186,14 @@ void _string_shrink_to_fit_func(string* _string_)
 	}
 }
 
+char _string_at_func(string* _string_, int pos)
+{
+	if(pos > _string_->size_string)
+		return 0;
+	else
+		return _string_->text[pos];
+}
+
 void string_pointers(string* _string_)
 {
 	_string_->read = _string_read_func;
@@ -197,6 +206,7 @@ void string_pointers(string* _string_)
 	_string_->stricmp = _string_compare_sensitive_case_func;
 	_string_->desconstructor = _string_desconstructor_func;
 	_string_->shrink_to_fit = _string_shrink_to_fit_func;
+	_string_->at = _string_at_func;
 	_string_->alloc_size = 0;
 	_string_->size_string = 0; 
 	_string_->charge_factor = 0;
