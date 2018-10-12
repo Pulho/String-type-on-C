@@ -27,7 +27,7 @@
 # Functions and their parameters !
 
 *		.constructor(string*); // Set pointers
-*		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default )
+*		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Works as a clear too
 *		.size(string*); // Return the size of the string
 *		.print(string*, char); // Print string and put the 'char' in the end (0 for no char and '\n' for newline)
 *		.toupper(string*); // Set the string to uppercase
