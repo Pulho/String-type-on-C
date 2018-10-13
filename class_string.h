@@ -39,9 +39,6 @@ char _string_at_func(string*, int);
 void _string_clear_func(string*);
 string newString();
 
-
-
-
 void _string_desconstructor_func(string* _string_)
 {
 	free(_string_->text);
