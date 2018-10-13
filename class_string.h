@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #endif
 
-
 typedef struct _c_string
 {
 	char* text;
@@ -19,6 +18,7 @@ typedef struct _c_string
 	void (*concat)(struct _c_string*, struct _c_string*);
 	void (*shrink_to_fit)(struct _c_string*);
 	void (*desconstructor)(struct _c_string*);
+	void (*clear)(struct _c_string*);
 
 	long size_string;
 	long alloc_size;
@@ -36,6 +36,7 @@ void _string_print_func(string*, char end_parameter);
 unsigned short _string_compare_sensitive_case_func(string*, string*);
 void _string_shrink_to_fit_func(string*);
 char _string_at_func(string*, int);
+void _string_clear_func(string*);
 string newString();
 
 
@@ -204,6 +205,21 @@ char _string_at_func(string* _string_, int pos)
 		return _string_->text[pos];
 }
 
+void _string_clear_func(string* _string_)
+{
+	long i = 0, j = _string_->size_string;
+	while(j > i)
+	{
+		_string_->text[i] = 0;
+		_string_->text[j] = 0;
+
+		i++;
+		j--;
+	}
+	_string_->size_string = 0;
+	_string_->alloc_size = 0;
+}
+
 string newString()
 {
 	string* _string_ = (string*)malloc(sizeof(struct _c_string));
@@ -219,6 +235,7 @@ string newString()
 	_string_->desconstructor = _string_desconstructor_func;
 	_string_->shrink_to_fit = _string_shrink_to_fit_func;
 	_string_->at = _string_at_func;
+	_string_->clear = _string_clear_func;
 	_string_->alloc_size = 0;
 	_string_->size_string = 0; 
 	_string_->charge_factor = 0;
