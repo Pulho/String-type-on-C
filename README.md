@@ -29,6 +29,7 @@
 *		.newString(void); // Set pointers
 *		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Works as a clear too
 *		.size(string*); // Return the size of the string
+*   .clear(string*); // Clear the content of the string
 *		.at(string*, int) // Return the char at the pos if pos exist, besides return 0;
 *		.print(string*, char); // Print string and put the 'char' in the end (0 for no char and '\n' for newline)
 *		.toupper(string*); // Set the string to uppercase
