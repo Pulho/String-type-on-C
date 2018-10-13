@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #endif
 
+
 typedef struct _c_string
 {
 	char* text;
@@ -31,6 +32,7 @@ void _string_desconstructor_func(string* _string_)
 	_string_->size_string = 0;
 	_string_->alloc_size = 0;
 	_string_->charge_factor = 0;
+	free(_string_);
 }
 
 void _string_concat_func(string* _stringconcat_, string* _stringtoconcat_)
@@ -189,8 +191,10 @@ char _string_at_func(string* _string_, int pos)
 		return _string_->text[pos];
 }
 
-void string_pointers(string* _string_)
+string newString()
 {
+	string* _string_ = (string*)malloc(sizeof(struct _c_string));
+
 	_string_->read = _string_read_func;
 	_string_->size = _string_return_size;
 	_string_->print = _string_print_func;
@@ -205,4 +209,6 @@ void string_pointers(string* _string_)
 	_string_->alloc_size = 0;
 	_string_->size_string = 0; 
 	_string_->charge_factor = 0;
+
+	return *_string_;
 }
