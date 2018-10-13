@@ -13,10 +13,7 @@
 ```C++
      int main()
       {
-        string x;
-
-        x.constructor = string_pointers;
-        x.constructor(&x);
+        string x = newString();
         
        // ( C O D E )   
         
@@ -24,12 +21,12 @@
       }
 ```  
  If you didn't understand, calm down and breathe, i'll explain right about now.
- So, as you can see, we create a variable of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `.constructor = string_pointers`. This way, `.constructor(&*);` will point for a function ( string_pointers ) that will do all the dirt work to set all pointers and variables inside of our struct.
+ So, as you can see, we create a variable of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `string x = newString()`. This way, the `newString();` function will do all the dirt work to set all pointers and variables inside of our struct.
   If you're familiar with constructor, you should know that you will need to use the`.desconstructor(&*)` to release memory.
   
 # Functions and their parameters !
 
-*		.constructor(string*); // Set pointers
+*		.newString(void); // Set pointers
 *		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Works as a clear too
 *		.size(string*); // Return the size of the string
 *		.at(string*, int) // Return the char at the pos if pos exist, besides return 0;
