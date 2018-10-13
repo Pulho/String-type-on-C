@@ -27,7 +27,7 @@
 # Functions and their parameters !
 
 *		.newString(void); // Set pointers
-*		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Works as a clear too
+*		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Overwrites the current contents if not empty
 *		.size(string*); // Return the size of the string
 *		.clear(string*) // Clear the content of the string
 *		.at(string*, int) // Return the char at the pos if pos exist, besides return 0;
