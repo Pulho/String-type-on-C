@@ -9,7 +9,6 @@ typedef struct _c_string
 	char* text;
 
 	void (*read)(struct _c_string*, char);
-	void (*constructor)(struct _c_string*);
 	void (*print)(struct _c_string*, char);
 	void (*tolower)(struct _c_string*);
 	void (*toupper)(struct _c_string*);
@@ -25,6 +24,22 @@ typedef struct _c_string
 	long alloc_size;
 	double charge_factor;
 }string;
+
+void _string_desconstructor_func(string*);
+void _string_concat_func(string*, string*);
+unsigned short _string_compare_func(string*, string*);
+void _string_read_func(string*, char);
+void _string_set_tolower(string*);
+void _string_set_toupper(string*);
+long _string_return_size(string*);
+void _string_print_func(string*, char end_parameter);
+unsigned short _string_compare_sensitive_case_func(string*, string*);
+void _string_shrink_to_fit_func(string*);
+char _string_at_func(string*, int);
+string newString();
+
+
+
 
 void _string_desconstructor_func(string* _string_)
 {
@@ -154,11 +169,9 @@ void _string_print_func(string* _string_, char end_parameter)
 
 unsigned short _string_compare_sensitive_case_func(string* _string, string* string_)
 {
-	string x, y;
+	string x = newString();
+	string y = newString();
 	int boolean;
-
-	x.constructor(&x);
-	y.constructor(&y);
 
 	x.text = _string->text;
 	y.text = string_->text;
