@@ -5,7 +5,7 @@
   Second, just explaining, **C language don't really have object**. So this code is not really a class, resembling more a simulation of a class object. So, be kind :D
 
 # Special Recognition
-  I want to thank my friend Marcos Heitor (https://github.com/mhco0)  for having helped me understand the operation of void pointers and pointer to function, thus enabling the execution of creating this code.
+  I want to thank my friend [Marcos Heitor](https://github.com/mhco0)  for having helped me understand the operation of void pointers and pointer to function, thus enabling the execution of creating this code.
   
 # How it works ?
   Let's see how a basic code works and i'll explain in your due time.
