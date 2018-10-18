@@ -17,7 +17,6 @@ typedef struct _c_string
 	unsigned short (*stricmp)(struct _c_string*, struct _c_string*);
 	void (*concat)(struct _c_string*, struct _c_string*);
 	void (*shrink_to_fit)(struct _c_string*);
-	void (*desconstructor)(struct _c_string*);
 	void (*clear)(struct _c_string*);
 
 	long size_string;
@@ -39,7 +38,7 @@ char _string_at_func(string*, int);
 void _string_clear_func(string*);
 string newString();
 
-void _string_desconstructor_func(string* _string_)
+void deleteString(string* _string_)
 {
 	free(_string_->text);
 	_string_->size_string = 0;
@@ -179,9 +178,9 @@ unsigned short _string_compare_sensitive_case_func(string* _string, string* stri
 
 	boolean = x.strcmp(&x, &y);
 
-	x.desconstructor(&x);
-	x.desconstructor(&y);
-
+	deleteString(&x);
+	deleteString(&y);
+	
 	return boolean;
 }
 
@@ -229,7 +228,6 @@ string newString()
 	_string_->concat = _string_concat_func;
 	_string_->strcmp = _string_compare_func;
 	_string_->stricmp = _string_compare_sensitive_case_func;
-	_string_->desconstructor = _string_desconstructor_func;
 	_string_->shrink_to_fit = _string_shrink_to_fit_func;
 	_string_->at = _string_at_func;
 	_string_->clear = _string_clear_func;
