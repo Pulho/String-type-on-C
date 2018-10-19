@@ -41,6 +41,6 @@
 *		.strcmp(string*, string*); // Compare strings ( with sensitive case. Returns a boolean )
 *		.stricmp(string*, string*); // Compare strings ignoring sensitive case ( Returns a boolean )
 *		.concat(string*, string*);  // Concat to the first input string
-*     .shrink_to_fit(string*); // Decreases the capacity of the string and makes it equal to its size
+*       .shrink_to_fit(string*); // Decreases the capacity of the string and makes it equal to its size
 
 
