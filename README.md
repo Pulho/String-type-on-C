@@ -27,8 +27,7 @@
 
 ### Non-object functions
 *		newString(void); // Set pointers
-*   deleteString(string*); // Release memory
-
+*		deleteString(string*); // Release memory
 
 ### Object functions 
 *		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Overwrites the current contents if not empty
