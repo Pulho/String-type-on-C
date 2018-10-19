@@ -11,22 +11,26 @@
   Let's see how a basic code works and i'll explain in your due time.
   
 ```C++
-     int main()
-      {
+    int main(int argc, char const *argv[]){
         string x = newString();
         
-       // ( C O D E )   
+       // (Y O U R   C O D E )   
         
-        x.desconstructor(&x);
-      }
+        deleteString(&x);
+    }
 ```  
  If you didn't understand, calm down and breathe, i'll explain right about now.
- So, as you can see, we create a variable of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `string x = newString()`. This way, the `newString();` function will do all the dirt work to set all pointers and variables inside of our struct.
-  If you're familiar with constructor, you should know that you will need to use the`.desconstructor(&*)` to release memory.
+ So, as you can see, we create a variable of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `string x = newString()`. This way, the `newString();` function will do all the dirty work to set all pointers and variables inside of our struct.
+  If you're familiar with constructor and 'new' stuffs, you should know that you will need to use the`deleteString(&x)` to release memory.
   
 # Functions and their parameters !
 
-*		.newString(void); // Set pointers
+### Non-object functions
+*		newString(void); // Set pointers
+*   deleteString(string*); // Release memory
+
+
+### Object functions 
 *		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Overwrites the current contents if not empty
 *		.size(string*); // Return the size of the string
 *		.clear(string*) // Clear the content of the string
@@ -37,7 +41,6 @@
 *		.strcmp(string*, string*); // Compare strings ( with sensitive case. Returns a boolean )
 *		.stricmp(string*, string*); // Compare strings ignoring sensitive case ( Returns a boolean )
 *		.concat(string*, string*);  // Concat to the first input string
-*   	.shrink_to_fit(string*); // Decreases the capacity of the string and makes it equal to its size
-*		.desconstructor(string*); // Release memory
+*   .shrink_to_fit(string*); // Decreases the capacity of the string and makes it equal to its size
 
 
