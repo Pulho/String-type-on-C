@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #endif
 
+#include <stdio.h>
+
 typedef struct _c_string
 {
 	char* text;
@@ -17,6 +19,7 @@ typedef struct _c_string
 	unsigned short (*stricmp)(struct _c_string*, struct _c_string*);
 	void (*concat)(struct _c_string*, struct _c_string*);
 	void (*shrink_to_fit)(struct _c_string*);
+	void (*desconstructor)(struct _c_string*);
 	void (*clear)(struct _c_string*);
 
 	long size_string;
@@ -44,7 +47,6 @@ void deleteString(string* _string_)
 	_string_->size_string = 0;
 	_string_->alloc_size = 0;
 	_string_->charge_factor = 0;
-	free(_string_);
 }
 
 void _string_concat_func(string* _stringconcat_, string* _stringtoconcat_)
@@ -166,22 +168,18 @@ void _string_print_func(string* _string_, char end_parameter)
 
 unsigned short _string_compare_sensitive_case_func(string* _string, string* string_)
 {
-	string x = newString();
-	string y = newString();
-	int boolean;
+	if(string_->size_string != _string->size_string)
+		return 0;
+	else
+	{
+		long i = 0;
 
-	x.text = _string->text;
-	y.text = string_->text;
+		for(i = 0; i < string_->size_string; i++)
+			if(((_string->text[i] >= 65 && _string->text[i] <= 90) ? (_string->text[i] + 32) : (_string->text[i])) != ((string_->text[i] >= 65 && string_->text[i] <= 90) ? (string_->text[i] + 32) : (string_->text[i])))
+				return 0;
+		return 1;
+	}
 
-	x.tolower(&x);
-	y.tolower(&x);
-
-	boolean = x.strcmp(&x, &y);
-
-	deleteString(&x);
-	deleteString(&y);
-	
-	return boolean;
 }
 
 void _string_shrink_to_fit_func(string* _string_)
