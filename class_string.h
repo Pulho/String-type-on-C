@@ -21,6 +21,7 @@ typedef struct _c_string
 	void (*shrink_to_fit)(struct _c_string*);
 	void (*desconstructor)(struct _c_string*);
 	void (*clear)(struct _c_string*);
+	void (*assign)(struct _c_string*, char*);
 
 	long size_string;
 	long alloc_size;
@@ -214,9 +215,33 @@ void _string_clear_func(string* _string_)
 	_string_->alloc_size = 0;
 }
 
+void _string_assign_func(string* _string_, char* text)
+{
+	if(!_string_->text)
+	{
+		_string_->alloc_size = 0;
+		free(_string_->text);
+	}
+
+	for(_string_->size_string = 0; text[_string_->size_string] != '\0'; _string_->size_string++)
+	{
+		if(_string_->size_string == 0)
+		{
+			_string_->text = (char*)malloc((_string_->size_string + 1) * sizeof(char));
+			_string_->text[_string_->size_string] = text[_string_->size_string];
+		}
+		else
+		{
+			_string_->text = (char*)realloc(_string_->text, (_string_->size_string + 1) * sizeof(char));
+			_string_->text[_string_->size_string] = text[_string_->size_string];
+		}
+	}
+	_string_->alloc_size = _string_->size_string;
+}
+
 string newString()
 {
-	string* _string_ = (string*)malloc(sizeof(struct _c_string));
+	string* _string_ = (string*)calloc(1,sizeof(struct _c_string));
 
 	_string_->read = _string_read_func;
 	_string_->size = _string_return_size;
@@ -229,6 +254,7 @@ string newString()
 	_string_->shrink_to_fit = _string_shrink_to_fit_func;
 	_string_->at = _string_at_func;
 	_string_->clear = _string_clear_func;
+	_string_->assign = _string_assign_func;
 	_string_->alloc_size = 0;
 	_string_->size_string = 0; 
 	_string_->charge_factor = 0;
