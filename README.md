@@ -34,6 +34,7 @@
 *		.size(string*); // Return the size of the string
 *		.clear(string*) // Clear the content of the string
 *		.at(string*, int) // Return the char at the pos if pos exist, besides return 0;
+*		.assign(string*, char*) // Assign the string to the input text;
 *		.print(string*, char); // Print string and put the 'char' in the end (0 for no char and '\n' for newline)
 *		.toupper(string*); // Set the string to uppercase
 *		.tolower(string*); // Set string to to lowercase 
