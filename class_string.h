@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #endif
 
-#include <stdio.h>
-
 typedef struct _c_string
 {
 	char* text;
