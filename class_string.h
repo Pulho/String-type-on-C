@@ -40,12 +40,12 @@ char _string_at_func(string*, int);
 void _string_clear_func(string*);
 string newString();
 
-void deleteString(string* _string_)
+void deleteString(string* This)
 {
-	free(_string_->text);
-	_string_->size_string = 0;
-	_string_->alloc_size = 0;
-	_string_->charge_factor = 0;
+	free(This->text);
+	This->size_string = 0;
+	This->alloc_size = 0;
+	This->charge_factor = 0;
 }
 
 void _string_concat_func(string* _stringconcat_, string* _stringtoconcat_)
@@ -90,7 +90,7 @@ unsigned short _string_compare_func(string* string_, string* _string)
 	}
 }
 
-void _string_read_func(string* _string_, char end_parameter)
+void _string_read_func(string* This, char end_parameter)
 {
 	char buffer;
 	unsigned short flag = 1;
@@ -98,8 +98,8 @@ void _string_read_func(string* _string_, char end_parameter)
 	if(end_parameter == 0)
 		end_parameter = '\n';
 
-	if(_string_->alloc_size != 0)
-		free(_string_->text);
+	if(This->alloc_size != 0)
+		free(This->text);
 
 	do
 	{
@@ -108,60 +108,60 @@ void _string_read_func(string* _string_, char end_parameter)
 		{
 			if(flag)
 			{
-				_string_->text = (char*)calloc(5, sizeof(char));
-				_string_->alloc_size = 5;
-				if(_string_->text == NULL)
+				This->text = (char*)calloc(5, sizeof(char));
+				This->alloc_size = 5;
+				if(This->text == NULL)
 				{
 					printf("BAD ALLOCATION\n");
 					exit(0);
 				}
-				_string_->text[_string_->size_string] = buffer;
-				_string_->size_string++;
+				This->text[This->size_string] = buffer;
+				This->size_string++;
 
 				flag = 0;
 			}
 			else
 			{
-				_string_->charge_factor = (double)_string_->size_string / _string_->alloc_size;
-				if(_string_->charge_factor >= 0.5)
+				This->charge_factor = (double)This->size_string / This->alloc_size;
+				if(This->charge_factor >= 0.5)
 				{
-					_string_->alloc_size = (_string_->alloc_size * 2 );
-					_string_->text = (char*)realloc(_string_->text, _string_->alloc_size * sizeof(char));
+					This->alloc_size = (This->alloc_size * 2 );
+					This->text = (char*)realloc(This->text, This->alloc_size * sizeof(char));
 				}
-				_string_->text[_string_->size_string] = buffer;
-				_string_->size_string++;
+				This->text[This->size_string] = buffer;
+				This->size_string++;
 			}
 		}
 	}while(buffer != end_parameter);
 }
 
-void _string_set_tolower(string* _string_)
+void _string_set_tolower(string* This)
 {
 	int i = 0;
-	for(i = 0; i < _string_->size_string; i++)
-		if(_string_->text[i] >= 65 && _string_->text[i] <= 90)
-			_string_->text[i] += 32;
+	for(i = 0; i < This->size_string; i++)
+		if(This->text[i] >= 65 && This->text[i] <= 90)
+			This->text[i] += 32;
 }
 
-void _string_set_toupper(string* _string_)
+void _string_set_toupper(string* This)
 {
 	int i = 0;
-	for(i = 0; i < _string_->size_string; i++)
-		if(_string_->text[i] >= 97 && _string_->text[i] <= 122)
-			_string_->text[i] -= 32;
+	for(i = 0; i < This->size_string; i++)
+		if(This->text[i] >= 97 && This->text[i] <= 122)
+			This->text[i] -= 32;
 }
 
-long _string_return_size(string* _string_)
+long _string_return_size(string* This)
 {
 
-	return _string_->size_string;
+	return This->size_string;
 }
 
-void _string_print_func(string* _string_, char end_parameter)
+void _string_print_func(string* This, char end_parameter)
 {
 	int i = 0;
-	for(i = 0; i < _string_->size_string; i++)
-		printf("%c", _string_->text[i]);
+	for(i = 0; i < This->size_string; i++)
+		printf("%c", This->text[i]);
 	printf("%c", end_parameter);
 }
 
@@ -181,81 +181,81 @@ unsigned short _string_compare_sensitive_case_func(string* _string, string* stri
 
 }
 
-void _string_shrink_to_fit_func(string* _string_)
+void _string_shrink_to_fit_func(string* This)
 {
-	if(_string_->text != NULL)
+	if(This->text != NULL)
 	{
-		_string_->text = (char*)realloc(_string_->text, _string_->size_string * sizeof(char));
-		_string_->alloc_size = _string_->size_string;
+		This->text = (char*)realloc(This->text, This->size_string * sizeof(char));
+		This->alloc_size = This->size_string;
 	}
 }
 
-char _string_at_func(string* _string_, int pos)
+char _string_at_func(string* This, int pos)
 {
-	if(pos > _string_->size_string)
+	if(pos > This->size_string)
 		return 0;
 	else
-		return _string_->text[pos];
+		return This->text[pos];
 }
 
-void _string_clear_func(string* _string_)
+void _string_clear_func(string* This)
 {
-	long i = 0, j = _string_->size_string;
+	long i = 0, j = This->size_string;
 	while(j > i)
 	{
-		_string_->text[i] = 0;
-		_string_->text[j] = 0;
+		This->text[i] = 0;
+		This->text[j] = 0;
 
 		i++;
 		j--;
 	}
-	_string_->size_string = 0;
-	_string_->alloc_size = 0;
+	This->size_string = 0;
+	This->alloc_size = 0;
 }
 
-void _string_assign_func(string* _string_, char* text)
+void _string_assign_func(string* This, char* text)
 {
-	if(!_string_->text)
+	if(!This->text)
 	{
-		_string_->alloc_size = 0;
-		free(_string_->text);
+		This->alloc_size = 0;
+		free(This->text);
 	}
 
-	for(_string_->size_string = 0; text[_string_->size_string] != '\0'; _string_->size_string++)
+	for(This->size_string = 0; text[This->size_string] != '\0'; This->size_string++)
 	{
-		if(_string_->size_string == 0)
+		if(This->size_string == 0)
 		{
-			_string_->text = (char*)malloc((_string_->size_string + 1) * sizeof(char));
-			_string_->text[_string_->size_string] = text[_string_->size_string];
+			This->text = (char*)malloc((This->size_string + 1) * sizeof(char));
+			This->text[This->size_string] = text[This->size_string];
 		}
 		else
 		{
-			_string_->text = (char*)realloc(_string_->text, (_string_->size_string + 1) * sizeof(char));
-			_string_->text[_string_->size_string] = text[_string_->size_string];
+			This->text = (char*)realloc(This->text, (This->size_string + 1) * sizeof(char));
+			This->text[This->size_string] = text[This->size_string];
 		}
 	}
-	_string_->alloc_size = _string_->size_string;
+	This->alloc_size = This->size_string;
 }
 
 string newString()
 {
-	string* _string_ = (string*)calloc(1,sizeof(struct _c_string));
+	string* This = (string*)calloc(1,sizeof(struct _c_string));
 
-	_string_->read = _string_read_func;
-	_string_->size = _string_return_size;
-	_string_->print = _string_print_func;
-	_string_->tolower = _string_set_tolower;
-	_string_->toupper = _string_set_toupper;
-	_string_->concat = _string_concat_func;
-	_string_->strcmp = _string_compare_func;
-	_string_->stricmp = _string_compare_sensitive_case_func;
-	_string_->shrink_to_fit = _string_shrink_to_fit_func;
-	_string_->at = _string_at_func;
-	_string_->clear = _string_clear_func;
-	_string_->assign = _string_assign_func;
-	_string_->alloc_size = 0;
-	_string_->size_string = 0; 
-	_string_->charge_factor = 0;
+	This->read = _string_read_func;
+	This->size = _string_return_size;
+	This->print = _string_print_func;
+	This->tolower = _string_set_tolower;
+	This->toupper = _string_set_toupper;
+	This->concat = _string_concat_func;
+	This->strcmp = _string_compare_func;
+	This->stricmp = _string_compare_sensitive_case_func;
+	This->shrink_to_fit = _string_shrink_to_fit_func;
+	This->at = _string_at_func;
+	This->clear = _string_clear_func;
+	This->assign = _string_assign_func;
+	This->alloc_size = 0;
+	This->size_string = 0; 
+	This->charge_factor = 0;
 
-	return *_string_;
+	return *This;
 }
