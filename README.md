@@ -25,7 +25,7 @@
   
 # Functions and their parameters !
 
-Note: Still it is necessary to send the address of the structure (Ex.: "x.read(&x,0)", as you can see, we must send '&x' as parameter even though we're using the function of the class of that same variable)
+Note: Still it is necessary to send the address of the structure (Ex.: x.read(&x,0), as you can see, we must send '&x' as parameter even though we're using the function of the class of that same variable)
 
 ### Non-object functions
 *		newString(void); // Set pointers
