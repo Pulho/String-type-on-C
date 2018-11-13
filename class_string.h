@@ -112,8 +112,7 @@ void _string_read_func(string* This, char end_parameter){
 				This->size_string++;
 
 				flag = 0;
-			}
-			else{
+			}else{
 				This->charge_factor = (double)This->size_string / This->alloc_size;
 				if(This->charge_factor >= 0.5){
 					This->alloc_size = (This->alloc_size * 2 );
@@ -160,8 +159,7 @@ void _string_print_func(string* This, char end_parameter){
 unsigned short _string_compare_sensitive_case_func(string* _string, string* string_){
 	if(string_->size_string != _string->size_string){
 		return 0;
-	}
-	else{
+	}else{
 		long i = 0;
 
 		for(i = 0; i < string_->size_string; i++){
@@ -183,8 +181,7 @@ void _string_shrink_to_fit_func(string* This){
 char _string_at_func(string* This, int pos){
 	if(pos > This->size_string){
 		return 0;
-	}
-	else{
+	}else{
 		return This->text[pos];
 	}
 }
@@ -212,8 +209,7 @@ void _string_assign_func(string* This, char* text){
 		if(This->size_string == 0){
 			This->text = (char*)malloc((This->size_string + 1) * sizeof(char));
 			This->text[This->size_string] = text[This->size_string];
-		}
-		else{
+		}else{
 			This->text = (char*)realloc(This->text, (This->size_string + 1) * sizeof(char));
 			This->text[This->size_string] = text[This->size_string];
 		}
