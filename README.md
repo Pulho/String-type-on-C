@@ -14,16 +14,18 @@
     int main(int argc, char const *argv[]){
         string x = newString();
         
-       // (Y O U R   C O D E )   
+       // (YOUR CODE)   
         
         deleteString(&x);
     }
 ```  
  If you didn't understand, calm down and breathe, i'll explain right about now.
- So, as you can see, we create a variable of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `string x = newString()`. This way, the `newString();` function will do all the dirty work to set all pointers and variables inside of our struct.
+ So, as you can see, we create a variable called 'x' of the type "string". Then, before we can use it as a object, we have to set all the pointers that this variable contains. That's why we use `string x = newString()`. This way, the `newString();` function will do all the dirty work to set all pointers and variables inside of our struct.
   If you're familiar with constructor and 'new' stuffs, you should know that you will need to use the`deleteString(&x)` to release memory.
   
 # Functions and their parameters !
+
+Note: Still it is necessary to send the address of the structure (Ex.: "x.read(&x,0)", as you can see, we must send '&x' as parameter even though we're using the function of the class of that same variable)
 
 ### Non-object functions
 *		newString(void); // Set pointers
