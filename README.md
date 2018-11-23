@@ -2,7 +2,7 @@
 
   First of all, this was my first experiment with void pointers and pointers to functions. I hope that is useful for some purpose of someone. This work is still in progress and development.
 
-  Second, just explaining, **C language don't really have object**. So this code is not really a class, resembling more a simulation of a class object. So, be kind :D
+  Second, just explaining, **C language don't really have object**. So this code is not really a class, resembling more a simulation of a class object, and if you ask me if it's safe to use it on any system I'd say no haha but i'm still testing and optimizing to be feasible one day, still testing. So, be kind :D
 
 # Special Recognition
   I want to thank my friend [Marcos Heitor](https://github.com/mhco0)  for having helped me understand the operation of void pointers and pointer to function, thus enabling the execution of creating this code.
