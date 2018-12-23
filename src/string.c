@@ -3,46 +3,7 @@
 #include <stdlib.h>
 #endif
 
-typedef struct _c_string string;
-
-struct _c_string{
-	char* text;
-
-	void (*read)(string*, char);
-	void (*print)(string*, char);
-	void (*tolower)(string*);
-	void (*toupper)(string*);
-	char (*at)(string*, int pos);
-	long (*size)(string*);
-	unsigned short (*strcmp)(string*, string*);
-	unsigned short (*stricmp)(string*, string*);
-	void (*concat)(string*, string*);
-	void (*shrink_to_fit)(string*);
-	void (*clear)(string*);
-	void (*assign)(string*, char*);
-
-	long size_string;
-	long alloc_size;
-	double charge_factor;
-};
-
-void _string_concat_func(string*, string*);
-unsigned short _string_compare_func(string*, string*);
-void _string_read_func(string*, char);
-void _string_set_tolower(string*);
-void _string_set_toupper(string*);
-long _string_return_size(string*);
-void _string_print_func(string*, char end_parameter);
-unsigned short _string_compare_sensitive_case_func(string*, string*);
-void _string_shrink_to_fit_func(string*);
-char _string_at_func(string*, int);
-void _string_clear_func(string*);
-string newString();
-
-void destroy(string* This){
-	free(This->text);
-	free(This);
-}
+#include "string.h"
 
 void _string_concat_func(string* _stringconcat_, string* _stringtoconcat_){
 	long size = _stringtoconcat_->size_string;
@@ -215,8 +176,13 @@ void _string_assign_func(string* This, char* text){
 	This->alloc_size = This->size_string;
 }
 
-string newString(){
-	string* This = (string*)calloc(1,sizeof(struct _c_string));
+void destroyString(string* This){
+	free(This->text);
+	free(This);
+}
+
+string newString(void){
+	string* This = (string*)malloc(sizeof(struct _c_string));
 
 	This->read = _string_read_func;
 	This->size = _string_return_size;
