@@ -16,7 +16,7 @@
         
        // (YOUR CODE)   
         
-        deleteString(&x);
+        destroyString(&x);
     }
 ```  
  If you didn't understand, calm down and breathe, i'll explain right about now.
@@ -29,7 +29,7 @@ Note: Still it is necessary to send the address of the structure (Ex.: x.read(&x
 
 ### :computer: Non-object functions
 *		newString(void); // Set pointers
-*		deleteString(string*); // Release memory
+*		destroyString(string*); // Release memory
 
 ### :computer: Object functions 
 *		.read(string*, char); // Read string until the 'char' is read ( 0 for Enter as Default ). Overwrites the current contents if not empty
