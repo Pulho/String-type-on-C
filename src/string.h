@@ -14,6 +14,7 @@ struct _c_string{
 	long (*size)(string*);
 	unsigned short (*strcmp)(string*, string*);
 	unsigned short (*stricmp)(string*, string*);
+	unsigned short (*constcmp)(string*, char*);
 	void (*concat)(string*, string*);
 	void (*shrink_to_fit)(string*);
 	void (*clear)(string*);
@@ -45,6 +46,8 @@ void _string_shrink_to_fit_func(string*);
 char _string_at_func(string*, int);
 
 void _string_clear_func(string*);
+
+unsigned short _string_constcmp_func(string*, char*);
 
 void destroyString(string*);
 

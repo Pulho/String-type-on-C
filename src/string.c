@@ -48,6 +48,7 @@ unsigned short _string_compare_func(string* string_, string* _string){
 void _string_read_func(string* This, char end_parameter){
 	char buffer;
 	unsigned short flag = 1;
+	fflush(stdin);
 
 	if(end_parameter == 0){
 		end_parameter = '\n';
@@ -181,6 +182,27 @@ void destroyString(string* This){
 	free(This);
 }
 
+unsigned short _string_constcmp_func(string* This, char* constInput){
+	int length = 0;
+
+	while(constInput[++length] != '\0');
+
+	if(This->size_string != length){
+		return 0;
+	}else{
+		long i = 0, j = This->size_string;
+		while(j > i){
+			if(This->text[i] != constInput[i] || This->text[j] != constInput[j]){
+				return 0;
+			}
+
+			i++;
+			j--;
+		}
+		return 1;
+	}	
+}
+
 string newString(void){
 	string* This = (string*)malloc(sizeof(struct _c_string));
 
@@ -196,6 +218,7 @@ string newString(void){
 	This->at = _string_at_func;
 	This->clear = _string_clear_func;
 	This->assign = _string_assign_func;
+	This->constcmp = _string_constcmp_func;
 	This->alloc_size = 0;
 	This->size_string = 0; 
 	This->charge_factor = 0;
