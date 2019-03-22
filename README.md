@@ -34,18 +34,4 @@ newString(void) | Set pointers
 destroyString(string*) | Release memory
 
 ### :computer: Object functions
-Object functions  | Information
-------------| -------------
-.read(string*, char)   | Read string until the 'char' is read ( 0 for Enter as Default ). Overwrites the current contents if not empty
-.size(string*)  | Return the size of the string
-.clear(string*) | Clear the content of the string
-.at(string*, int) | Return the char at the pos if pos exist, besides return 0;
-.assign(string*, char*) | Assign the string to the input text;
-.print(string*, char) | Print string and put the 'char' in the end (0 for no char and '\n' for newline)
-.toupper(string*) | Set the string to uppercase
-.tolower(string*) | Set string to to lowercase 
-.strcmp(string*, string*) | Compare strings ( with sensitive case. Returns a boolean )
-.stricmp(string*, string*) | Compare strings ignoring sensitive case ( Returns a boolean )
-.constcmp(string*, char*) | Allow to compare directly with a text. ( with sensitive case. Returns a boolean )
-.concat(string*, string*)  | Concat to the first input string
-.shrink_to_fit(string*) | Decreases the capacity of the string and makes it equal to its size
+<img width="904" height="668" align="center" style="float: left; margin: 0 10px 0 0;" alt="functions" src="https://github.com/Pulho/String-type-on-C/blob/master/functions.png">
