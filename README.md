@@ -10,7 +10,10 @@
 # :books: How it works ?
   Let's see how a basic code works and i'll explain in your due time.
   
-```C++
+```C
+    #include <stdio.h>
+    #include "string.c" // The Library
+
     int main(int argc, char const *argv[]){
         string x = newString();
         
