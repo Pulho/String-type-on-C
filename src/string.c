@@ -140,7 +140,7 @@ void _string_shrink_to_fit_func(string* This){
 
 char _string_at_func(string* This, int pos){
 	if(pos > This->size_string){
-		return 0;
+		return -1;
 	}else{
 		return This->text[pos];
 	}
