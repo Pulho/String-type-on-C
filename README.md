@@ -1,4 +1,4 @@
-# Welcome to String " Class" on C !
+# Welcome to String " Class " on C !
 
   First of all, this was my first experiment with void pointers and pointers to functions. I hope that is useful for some purpose of someone. This work is still in progress and development.
 
@@ -51,4 +51,4 @@ strcmp(string*, string*) | Compare strings with sensitive case. Returns a boolea
 stricmp(string*, string*) | Compare strings ignoring sensitive case. Returns a boolean
 constcmp(string*, char*) | Allow to compare directly with a text with sensitive case. Returns a boolean
 concat(string*, string*) | Concat to the first input string
-shrink_to_fit(string*) | Decreases the capacity of the string and makes it euqla to its size
+shrink_to_fit(string*) | Decreases the capacity of the string and makes it equal to its size
